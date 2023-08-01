@@ -5,9 +5,43 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: black !important;
+  font-family: 'Poppins', sans-serif !important;
+  color: orange !important;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+#carsel{
+  height: 550px;
+}
+
+#navimage{
+  height: 70px;
+  width: 70px;
+}
+.carsel2{
+  height: 100% !important;
+  object-fit: contain !important;
+}
+
+.font_color_custom{
+  color: white !important;
+}
+.signup_container{
+  background-color: grey;
+  opacity: 0.9;
+  border-radius: 5px;
+}
+.ant-spin{
+  position: absolute;
+  top: 47%;
+  left: 48.5%;
+  z-index:1;
+}
+
+.Deleteicon{
+  cursor: pointer;
 }
