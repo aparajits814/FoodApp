@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from '../Navbar'
-
 function History() {
+    
     const [hist, setHist] = useState([]);
     const fetchData = async () => {
         let authtoken = localStorage.getItem('AuthToken');

@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
 import Home from './components/screens/Home';
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle';
 import Signup from './components/screens/Signup';
@@ -30,8 +30,8 @@ function App() {
       <CartStateContext.Provider value={state}>
         <BrowserRouter>
           <Routes>
-            <Route path="/myorders" element={<History></History>}></Route>
-            <Route path="/cart" element={<Cart></Cart>} />
+            <Route path="/myorders" element={<ProtectedRoute><History></History></ProtectedRoute>}></Route>
+            <Route path="/cart" element={<ProtectedRoute><Cart></Cart></ProtectedRoute>} />
             <Route path="/" element={<Home></Home>} />
             <Route path="/signup" element={<Signup></Signup>}></Route>
             <Route path="/login" element={<Login></Login>}></Route>
@@ -44,4 +44,11 @@ function App() {
 }
 
 export default App;
+export function ProtectedRoute(props){
+  if(localStorage.getItem('AuthToken')){
+    return props.children;
+  }else{
+    return <Navigate to="/" />
+  }
+}
 export { CartStateContext, CartDispatchContext };

@@ -13,7 +13,6 @@ function Home() {
       },
     })
     const foodData =await response.json();
-    console.log(foodData);
     setFoodItems(foodData);
   
   }
