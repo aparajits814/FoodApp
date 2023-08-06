@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Navbar from '../Navbar'
 import { Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
+import { v4 as uuidv4 } from 'uuid';
 function History() {
     
     const [hist, setHist] = useState([]);
@@ -24,6 +25,7 @@ function History() {
         fetchData();
     }, [])
     const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
+    console.log(hist);
     return (
         <div>
             <Navbar></Navbar>
@@ -36,14 +38,14 @@ function History() {
                 ""
             }
             {
-                hist.map((d) => {
+                hist.map((d,index) => {
                     return (
-                        <>
-                            <h4>{d.date.slice(0, 10)}</h4>
-                            <hr />
-                            <table className="table table-bordered table-dark">
-                                <thead>
-                                    <tr>
+                        <div key={uuidv4()}>
+                            <h4 key={uuidv4()}>{d.date.slice(0, 10)}</h4>
+                            <hr key={uuidv4()} />
+                            <table key={uuidv4()} className="table table-bordered table-dark">
+                                <thead key={uuidv4()}>
+                                    <tr key={uuidv4()}>
                                         <th scope="col">Sr.No</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Price</th>
@@ -51,11 +53,11 @@ function History() {
                                         <th scope="col">Size</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody key={uuidv4()}>
                                     {d.data.map((x, i) => {
                                         return (
-                                            <tr>
-                                                <th scope="row">{i + 1}</th>
+                                            <tr key={uuidv4()}>
+                                                <th  scope="row">{i+1}</th>
                                                 <td>{x.name}</td>
                                                 <td> {x.price} </td>
                                                 <td>{x.qty}</td>
@@ -65,8 +67,8 @@ function History() {
                                     })}
                                 </tbody>
                             </table>
-                            <hr />
-                        </>
+                            <hr key={uuidv4()} />
+                        </div>
                     )
                 })
             }
