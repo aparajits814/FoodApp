@@ -7,13 +7,11 @@ function Cart() {
     const [loading,setLoading]=useState(false);
     let data = useContext(CartStateContext);
     let dispatch = useContext(CartDispatchContext);
-    console.log(data);
     let total = 0;
     data.map((d) => {
         return total = total + d.price;
     })
     const onDel = async (index) => {
-        console.log("clicked" + index);
         await dispatch({ type: "REMOVE", index: index });
     }
     const handleOnSubmit=async()=>{
