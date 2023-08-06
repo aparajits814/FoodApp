@@ -28,7 +28,7 @@ function Home() {
         <div className="row">
         {foodItems.map((data)=>{
           return(
-            <div key={data._id} className='col-sm-4 col-md-6 col-lg-3'><Card data={data}></Card></div>
+            <div key={data._id} className='col-12 col-sm-4 col-md-6 col-lg-4 col-xl-3'><Card data={data}></Card></div>
           )
         })}
         </div>
