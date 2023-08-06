@@ -45,3 +45,14 @@ code {
 .Deleteicon{
   cursor: pointer;
 }
+.content{
+  min-height: 100vh;
+}
+.container_cart{
+  text-align: center;
+}
+.card{
+  margin: auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}

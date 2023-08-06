@@ -1,9 +1,10 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { CartStateContext, CartDispatchContext } from '../../App'
 import Navbar from '../Navbar';
-import { message } from 'antd';
-import Footer from '../Footer';
+import { Spin, message } from 'antd';
+import { LoadingOutlined } from '@ant-design/icons';
 function Cart() {
+    const [loading,setLoading]=useState(false);
     let data = useContext(CartStateContext);
     let dispatch = useContext(CartDispatchContext);
     console.log(data);
@@ -16,6 +17,7 @@ function Cart() {
         await dispatch({ type: "REMOVE", index: index });
     }
     const handleOnSubmit=async()=>{
+        setLoading(true);
         let authtoken=localStorage.getItem('AuthToken');
         const response=await fetch("http://localhost:5000/api/foodOrder",{
             method:'POST',
@@ -30,13 +32,16 @@ function Cart() {
             message.success(r.msg);
             await dispatch({type:"DROP"});
         }
+        setLoading(false);
     }
+    const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
     return (
         <div>
             <Navbar></Navbar>
+            {loading && <Spin indicator={antIcon}></Spin>}
             <div className="table-responsive">
 
-                <table className="table">
+                <table className="table table-bordered table-dark">
                     <thead>
                         <tr>
                             <th scope="col">Sr.No</th>
@@ -68,7 +73,7 @@ function Cart() {
                 </table>
                 {
                     data.length === 0 ?
-                        <div className="container">
+                        <div className="container_cart">
                             <h2>Cart Empty!</h2>
                         </div>
                         :
@@ -79,7 +84,6 @@ function Cart() {
                 }
 
             </div>
-            <Footer></Footer>
         </div>
     )
 }

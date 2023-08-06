@@ -29,7 +29,7 @@ function Card(prop) {
     }, [size]);
     return (
         <div>
-            <div className="card m-3" style={{ "width": "300px", "height": "300px" }}>
+            <div className="card" style={{ "width": "300px", "height": "300px" }}>
                 <img src={prop.data.img} className="card-img-top" alt="..." style={{ height: "120px" }} />
                 <div className="card-body">
                     <h5 className="card-title">{prop.data.name}</h5>
