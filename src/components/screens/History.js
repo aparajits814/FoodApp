@@ -25,7 +25,6 @@ function History() {
         fetchData();
     }, [])
     const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
-    console.log(hist);
     return (
         <div>
             <Navbar></Navbar>
