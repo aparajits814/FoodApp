@@ -3,7 +3,6 @@ const router = express.Router();
 const User = require('../User.js');
 const bcryptjs = require('bcryptjs');
 const jwt=require('jsonwebtoken');
-const secret="MERNstackFoodapp";
 
 router.post('/login', async (req, res) => {
     const userData = await User.findOne({email:req.body.email});
@@ -19,7 +18,7 @@ router.post('/login', async (req, res) => {
             id:userData._id
         }
     }
-    const authToken=jwt.sign(data,secret);
+    const authToken=jwt.sign(data,process.env.SECRET);
     res.json({ msg: "", successUser: true ,successPassword: true, authToken:authToken });
 });
 module.exports = router;

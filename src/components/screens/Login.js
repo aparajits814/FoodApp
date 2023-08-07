@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Navbar from '../Navbar'
 import { message,Spin} from 'antd'
+import { LoadingOutlined } from '@ant-design/icons'
 function Login() {
   const [loading,setLoading]=useState(false);
   const [password, setPassword] = useState("");
@@ -39,10 +40,11 @@ function Login() {
     }
     setLoading(false);
   }
+  const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
   return (
     <>
       <Navbar></Navbar>
-      {loading && (<Spin size='large' />)}
+      {loading && (<Spin indicator={antIcon} />)}
       <div className="container signup_container">
         <form onSubmit={HandleOnClick} className='mt-4'>
           <div className="mb-3">
